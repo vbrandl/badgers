@@ -1,5 +1,6 @@
 //! Simple badge generator
 
+use ab_glyph::{point as abpoint, Font as ABFont, FontArc, Point as ABPoint, ScaleFont};
 use base64::display::Base64Display;
 use once_cell::sync::Lazy;
 use rusttype::{point, Font, Point, PositionedGlyph, Scale};
@@ -28,15 +29,18 @@ impl Default for BadgeOptions {
 
 pub struct Badge {
     options: BadgeOptions,
-    font: Font<'static>,
+    font: FontArc,
     scale: Scale,
-    offset: Point<f32>,
+    offset: ABPoint,
 }
 
 impl Badge {
     pub fn new(options: BadgeOptions) -> Result<Badge, String> {
-        static FONT: Lazy<Font> =
-            Lazy::new(|| Font::try_from_bytes(FONT_DATA).expect("Failed to parse FONT_DATA"));
+        static FONT: Lazy<FontArc> =
+            // Lazy::new(|| Font::try_from_bytes(FONT_DATA).expect("Failed to parse FONT_DATA"));
+            Lazy::new(|| {
+                FontArc::try_from_slice(FONT_DATA).expect("Failed to parse FONT_DATA")
+            });
 
         let font = &*FONT;
         let scale = Scale {
@@ -44,8 +48,9 @@ impl Badge {
             y: FONT_SIZE,
         };
 
-        let v_metrics = font.v_metrics(scale);
-        let offset = point(0.0, v_metrics.ascent);
+        let scaled = font.as_scaled(FONT_SIZE);
+        // let v_metrics = font.v_metrics(scale);
+        let offset = abpoint(0.0, scaled.ascent());
 
         if options.status.is_empty() || options.subject.is_empty() {
             return Err(String::from("status and subject must not be empty"));
