@@ -1,6 +1,8 @@
 //! Simple badge generator
 
-use ab_glyph::{point as abpoint, Font as ABFont, FontArc, Point as ABPoint, ScaleFont};
+use ab_glyph::{
+    point as abpoint, Font as ABFont, FontArc, Glyph, Point as ABPoint, PxScale, ScaleFont,
+};
 use base64::display::Base64Display;
 use once_cell::sync::Lazy;
 use rusttype::{point, Font, Point, PositionedGlyph, Scale};
@@ -30,7 +32,7 @@ impl Default for BadgeOptions {
 pub struct Badge {
     options: BadgeOptions,
     font: FontArc,
-    scale: Scale,
+    scale: PxScale,
     offset: ABPoint,
 }
 
@@ -43,7 +45,7 @@ impl Badge {
             });
 
         let font = &*FONT;
-        let scale = Scale {
+        let scale = PxScale {
             x: FONT_SIZE,
             y: FONT_SIZE,
         };
@@ -114,21 +116,52 @@ impl Badge {
     }
 
     fn calculate_width(&self, text: &str) -> u32 {
-        let glyphs: Vec<PositionedGlyph> =
-            self.font.layout(text, self.scale, self.offset).collect();
-
-        let width: u32 = glyphs
-            .iter()
-            .rev()
-            .filter_map(|g| {
-                g.pixel_bounding_box()
-                    .map(|b| b.min.x as f32 + g.unpositioned().h_metrics().advance_width)
-            })
-            .next()
-            .unwrap_or(0.0)
-            .ceil() as u32;
-
+        let width = self.layout(text).ceil() as u32;
         width + ((text.len() as u32 - 1) * 2)
+        // let glyphs: Vec<Glyph> = self.layout(text);
+
+        // let width: u32 = glyphs
+        //     .iter()
+        //     .rev()
+        //     .filter_map(|g| {
+        //         g.pixel_bounding_box()
+        //             .map(|b| b.min.x as f32 + g.unpositioned().h_metrics().advance_width)
+        //     })
+        //     .next()
+        //     .unwrap_or(0.0)
+        //     .ceil() as u32;
+
+        // width + ((text.len() as u32 - 1) * 2)
+    }
+
+    /// Simple single-line glyph layout.
+    fn layout(&self, text: &str) -> f32 {
+        let font = self.font.as_scaled(self.scale);
+
+        let mut caret = abpoint(0.0, font.ascent());
+        let mut last_glyph: Option<Glyph> = None;
+        let mut target = Vec::new();
+        for c in text.chars() {
+            if c.is_control() {
+                continue;
+            }
+            let mut glyph = font.scaled_glyph(c);
+            if let Some(previous) = last_glyph.take() {
+                caret.x += font.kern(previous.id, glyph.id);
+            }
+            glyph.position = caret;
+
+            last_glyph = Some(glyph.clone());
+            caret.x += font.h_advance(glyph.id);
+
+            target.push(glyph);
+        }
+        match (target.first(), target.last()) {
+            (Some(first), Some(last)) => {
+                font.glyph_bounds(last).max.x - font.glyph_bounds(first).min.x
+            }
+            _ => 0.,
+        }
     }
 }
 
