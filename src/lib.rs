@@ -1,11 +1,8 @@
 //! Simple badge generator
 
-use ab_glyph::{
-    point as abpoint, Font as ABFont, FontArc, Glyph, Point as ABPoint, PxScale, ScaleFont,
-};
+use ab_glyph::{point, Font, FontArc, Glyph, PxScale, ScaleFont};
 use base64::display::Base64Display;
 use once_cell::sync::Lazy;
-use rusttype::{point, Font, Point, PositionedGlyph, Scale};
 
 const FONT_DATA: &[u8] = include_bytes!(concat!(env!("CARGO_MANIFEST_DIR"), "/DejaVuSans.ttf"));
 const FONT_SIZE: f32 = 11.0;
@@ -33,26 +30,18 @@ pub struct Badge {
     options: BadgeOptions,
     font: FontArc,
     scale: PxScale,
-    offset: ABPoint,
 }
 
 impl Badge {
     pub fn new(options: BadgeOptions) -> Result<Badge, String> {
         static FONT: Lazy<FontArc> =
-            // Lazy::new(|| Font::try_from_bytes(FONT_DATA).expect("Failed to parse FONT_DATA"));
-            Lazy::new(|| {
-                FontArc::try_from_slice(FONT_DATA).expect("Failed to parse FONT_DATA")
-            });
+            Lazy::new(|| FontArc::try_from_slice(FONT_DATA).expect("Failed to parse FONT_DATA"));
 
         let font = &*FONT;
         let scale = PxScale {
             x: FONT_SIZE,
             y: FONT_SIZE,
         };
-
-        let scaled = font.as_scaled(FONT_SIZE);
-        // let v_metrics = font.v_metrics(scale);
-        let offset = abpoint(0.0, scaled.ascent());
 
         if options.status.is_empty() || options.subject.is_empty() {
             return Err(String::from("status and subject must not be empty"));
@@ -63,7 +52,7 @@ impl Badge {
             // This clone is cheap since Font is an Arc
             font: font.clone(),
             scale,
-            offset,
+            // offset,
         })
     }
 
@@ -117,28 +106,14 @@ impl Badge {
 
     fn calculate_width(&self, text: &str) -> u32 {
         let width = self.layout(text).ceil() as u32;
-        width + ((text.len() as u32 - 1) * 2)
-        // let glyphs: Vec<Glyph> = self.layout(text);
-
-        // let width: u32 = glyphs
-        //     .iter()
-        //     .rev()
-        //     .filter_map(|g| {
-        //         g.pixel_bounding_box()
-        //             .map(|b| b.min.x as f32 + g.unpositioned().h_metrics().advance_width)
-        //     })
-        //     .next()
-        //     .unwrap_or(0.0)
-        //     .ceil() as u32;
-
-        // width + ((text.len() as u32 - 1) * 2)
+        width + ((text.len() as u32 - 1) * 2) - 2
     }
 
     /// Simple single-line glyph layout.
     fn layout(&self, text: &str) -> f32 {
         let font = self.font.as_scaled(self.scale);
 
-        let mut caret = abpoint(0.0, font.ascent());
+        let mut caret = point(0.0, font.ascent());
         let mut last_glyph: Option<Glyph> = None;
         let mut target = Vec::new();
         for c in text.chars() {
