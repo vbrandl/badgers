@@ -1,7 +1,7 @@
 # Badgers - Create SVG Badges
 
 [![Hits-of-Code](https://hitsofcode.com/github/vbrandl/badgers)](https://hitsofcode.com/github/vbrandl/badgers/view)
-[![Rust](https://github.com/vbrandl/badgers/actions/workflows/rust.yml/badge.svg)](https://github.com/vbrandl/badgers/actions/workflows/rust.yml)
+[![Rust](https://github.com/vbrandl/badgers/actions/workflows/ci.yml/badge.svg)](https://github.com/vbrandl/badgers/actions/workflows/ci.yml)
 [![dependency status](https://deps.rs/repo/github/vbrandl/badgers/status.svg)](https://deps.rs/repo/github/vbrandl/badgers)
 
 This is a Rust crate to generate simple SVG badges to be used e.g. in README
