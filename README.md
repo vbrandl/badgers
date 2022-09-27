@@ -33,12 +33,12 @@ advisory.
 
 This fork was created since the original `badge` crate is no longer maintained
 and the code has been removed from the originating repository:
-rust-lang/docs.rs@94f3bba6815412bc4672621c4690a93e656486c7
+https://github.com/rust-lang/docs.rs/commit/94f3bba6815412bc4672621c4690a93e656486c7
 
 While trying to be a 1:1 replacement of `badge`, either my lack of deep
 understanding of the problem space or minor differences between `rusttype` and
 `ab_glyph` required some 1 pixel changes in the testcases:
-vbrandl/badgers@9c8cdb91b81e95fb51f543237038cedeb2a3cb4d
+https://github.com/vbrandl/badgers/commit/9c8cdb91b81e95fb51f543237038cedeb2a3cb4d
 
 This fork exists mostly for personal use in
 [`vbrandl/hoc`](https://github.com/vbrandl/hoc) but feel free to give it a try.
