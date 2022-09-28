@@ -63,7 +63,6 @@ jobs:
   clippy:
     name: Clippy
     runs-on: ubuntu-latest
-    needs: test
 
     steps:
       - name: Checkout sources
