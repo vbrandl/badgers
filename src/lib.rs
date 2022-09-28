@@ -172,7 +172,7 @@ mod tests {
     #[test]
     fn test_to_svg() {
         const TEST_BADGE: &str =
-            include_str!(concat!(env!("CARGO_MANIFEST_DIR"), "/test_badge.svg"));
+            include_str!(concat!(env!("CARGO_MANIFEST_DIR"), "/tests/test_badge.svg"));
 
         let options = BadgeOptions {
             subject: "docs".to_owned(),
