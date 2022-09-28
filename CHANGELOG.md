@@ -9,9 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- [deprecated](https://rustsec.org/advisories/RUSTSEC-2021-0140.html)
-  [`rusttype`](https://crates.io/crates/rusttype) has been replaced by
-  [`ab_glyph`](https://crates.io/crates/ab_glyph)
+- [deprecated](https://rustsec.org/advisories/RUSTSEC-2021-0140.html) [`rusttype`](https://crates.io/crates/rusttype) has been replaced by [`ab_glyph`](https://crates.io/crates/ab_glyph)
 
 
 ## Point of Fork
