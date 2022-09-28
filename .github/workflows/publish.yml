@@ -7,7 +7,7 @@ on:
 
 jobs:
   tests:
-    - uses: vbrandl/badgers/.github/workflows/ci.yml@master
+    uses: vbrandl/badgers/.github/workflows/ci.yml@master
 
   publish:
     name: Publish
