@@ -4,7 +4,10 @@ use ab_glyph::{point, Font, FontArc, Glyph, PxScale, ScaleFont};
 use base64::display::Base64Display;
 use once_cell::sync::Lazy;
 
-const FONT_DATA: &[u8] = include_bytes!(concat!(env!("CARGO_MANIFEST_DIR"), "/DejaVuSans.ttf"));
+const FONT_DATA: &[u8] = include_bytes!(concat!(
+    env!("CARGO_MANIFEST_DIR"),
+    "/assets/DejaVuSans.ttf"
+));
 const FONT_SIZE: f32 = 11.0;
 
 pub struct BadgeOptions {
