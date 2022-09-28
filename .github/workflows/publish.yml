@@ -7,7 +7,7 @@ on:
 
 jobs:
   tests:
-    - uses: ./.github/workflows/ci.yml
+    - uses: vbrandl/badgers/.github/workflows/ci.yml
   publish:
     name: Publish
     needs: [tests]
