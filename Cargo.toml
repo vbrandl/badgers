@@ -5,7 +5,6 @@ description = "Simple badge generator"
 authors = ["Valentin Brandl <mail+rust@vbrandl.net>", "Onur Aslan <onur@onur.im>", "Joshua Nelson <jyn514@gmail.com>", "Chase Wilson <contact@chasewilson.dev>", "The Rust Project Developers"]
 
 license-file = "LICENSE"
-license = "MIT"
 
 readme = "README.md"
 keywords = ["badge", "svg"]
