@@ -1,11 +1,17 @@
 [package]
 name = "badgers"
-version = "0.3.0"
+version = "1.0.0"
 description = "Simple badge generator"
 authors = ["Valentin Brandl <mail+rust@vbrandl.net>", "Onur Aslan <onur@onur.im>", "Joshua Nelson <jyn514@gmail.com>", "Chase Wilson <contact@chasewilson.dev>", "The Rust Project Developers"]
+
 license-file = "LICENSE"
+license = "MIT"
+
+readme = "README.md"
+keywords = ["badge", "svg"]
 repository = "https://github.com/vbrandl/badgers"
 documentation = "https://docs.rs/badgers"
+
 edition = "2018"
 
 [dependencies]

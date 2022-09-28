@@ -3,6 +3,9 @@
 [![Hits-of-Code](https://hitsofcode.com/github/vbrandl/badgers)](https://hitsofcode.com/github/vbrandl/badgers/view)
 [![Rust](https://github.com/vbrandl/badgers/actions/workflows/ci.yml/badge.svg)](https://github.com/vbrandl/badgers/actions/workflows/ci.yml)
 [![dependency status](https://deps.rs/repo/github/vbrandl/badgers/status.svg)](https://deps.rs/repo/github/vbrandl/badgers)
+[![Crates.io](https://img.shields.io/crates/v/badgers.svg)](https://crates.io/crates/badgers)
+[![docs.rs](https://docs.rs/badgers/badge.svg)](https://docs.rs/badgers/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/vbrandl/badgers/blob/master/LICENSE)
 
 This is a Rust crate to generate simple SVG badges to be used e.g. in README
 files. The subject, status and color of the badge can be configured.
