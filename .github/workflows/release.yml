@@ -1,18 +1,51 @@
 name: Release
+
 on:
-  workflow_run:
-    workflows: ["Publish to crates.io"]
-    types:
-      - completed
+  push:
+    tags:
+      - v*
 
 jobs:
-  release:
+  tests:
+    uses: vbrandl/badgers/.github/workflows/ci.yml@master
+
+  publish:
+    name: Publish to crates.io
+    needs: [tests]
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }} && github.repository_owner == 'vbrandl'
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout sources
+        uses: actions/checkout@master
+
+      - name: Install stable toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Cache cargo registry, index and build directory
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            ./target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - run: cargo login ${CRATES_IO_TOKEN}
+        env:
+          CRATES_IO_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
+
+      - run: cargo publish
+
+  release:
+    name: Release
+    needs: [tests]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
       - uses: taiki-e/create-gh-release-action@v1
         with:
           changelog: CHANGELOG.md
           token: ${{ secrets.GITHUB_TOKEN }}
-
