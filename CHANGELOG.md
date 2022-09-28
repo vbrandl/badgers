@@ -5,6 +5,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] 2022-09-28
+
 ### Fixed
 
 - [deprecated](https://rustsec.org/advisories/RUSTSEC-2021-0140.html)
@@ -14,8 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Point of Fork
 
-Changes beyond this point were done pre-fork in the
-[`badge`](https://crates.io/crates/badge) and are kept for historical reasons.
+Changes beyond this point were made pre-fork in the
+[`badge`](https://crates.io/crates/badge) crate and are kept for historical
+reasons.
 
 ## [0.3.0] 2020-07-26
 
