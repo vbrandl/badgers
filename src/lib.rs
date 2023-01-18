@@ -62,7 +62,10 @@ impl Badge {
     pub fn to_svg_data_uri(&self) -> String {
         format!(
             "data:image/svg+xml;base64,{}",
-            Base64Display::from(self.to_svg().as_bytes(), &base64::engine::DEFAULT_ENGINE),
+            Base64Display::new(
+                self.to_svg().as_bytes(),
+                &base64::engine::general_purpose::STANDARD_NO_PAD
+            ),
         )
     }
 
