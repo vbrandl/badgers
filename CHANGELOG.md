@@ -5,6 +5,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [1.2.0] 2023-01-18
+
 ### Dependencies
 
 * Updated the requirements on [base64](https://github.com/marshallpierce/rust-base64) from 0.20 to 0.21 to permit the latest version ([#5])
