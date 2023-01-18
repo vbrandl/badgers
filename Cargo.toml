@@ -1,6 +1,6 @@
 [package]
 name = "badgers"
-version = "1.1.0"
+version = "1.2.0"
 description = "Simple badge generator"
 authors = ["Valentin Brandl <mail+rust@vbrandl.net>", "Onur Aslan <onur@onur.im>", "Joshua Nelson <jyn514@gmail.com>", "Chase Wilson <contact@chasewilson.dev>", "The Rust Project Developers"]
 
