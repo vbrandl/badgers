@@ -64,7 +64,7 @@ impl Badge {
             "data:image/svg+xml;base64,{}",
             Base64Display::new(
                 self.to_svg().as_bytes(),
-                &base64::engine::general_purpose::STANDARD_NO_PAD
+                &base64::engine::general_purpose::STANDARD
             ),
         )
     }
