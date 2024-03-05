@@ -15,5 +15,5 @@ edition = "2018"
 
 [dependencies]
 ab_glyph = "0.2.16"
-base64 = "0.21"
+base64 = "0.22"
 once_cell = "1"
