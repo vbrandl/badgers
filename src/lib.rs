@@ -1,5 +1,7 @@
 //! Simple badge generator
 
+use std::convert::TryFrom;
+
 use ab_glyph::{point, Font, FontArc, Glyph, PxScale, ScaleFont};
 use base64::display::Base64Display;
 use once_cell::sync::Lazy;
@@ -36,6 +38,11 @@ pub struct Badge {
 }
 
 impl Badge {
+    /// Create a new badge.
+    ///
+    /// # Errors
+    ///
+    /// Will return `Err` if the `status` or `subject` is empty.
     pub fn new(options: BadgeOptions) -> Result<Badge, String> {
         static FONT: Lazy<FontArc> =
             Lazy::new(|| FontArc::try_from_slice(FONT_DATA).expect("Failed to parse FONT_DATA"));
@@ -59,6 +66,7 @@ impl Badge {
         })
     }
 
+    #[must_use]
     pub fn to_svg_data_uri(&self) -> String {
         format!(
             "data:image/svg+xml;base64,{}",
@@ -69,6 +77,7 @@ impl Badge {
         )
     }
 
+    #[must_use]
     pub fn to_svg(&self) -> String {
         let left_width = self.calculate_width(&self.options.subject) + 6;
         let right_width = self.calculate_width(&self.options.status) + 6;
@@ -110,9 +119,15 @@ impl Badge {
         svg
     }
 
+    /// # Panics
+    ///
+    /// If `text` is longer than [`u32::MAX`]
     fn calculate_width(&self, text: &str) -> u32 {
+        #[allow(clippy::cast_sign_loss, // layout is always positive
+                clippy::cast_possible_truncation // TODO: this might break for texts that are too long
+                )]
         let width = self.layout(text).ceil() as u32;
-        width + ((text.len() as u32 - 1) * 2) - 2
+        width + ((u32::try_from(text.len()).expect("text to long") - 1) * 2) - 2
     }
 
     /// Simple single-line glyph layout.
@@ -159,11 +174,11 @@ mod tests {
         assert!(Badge::new(options()).is_ok());
 
         let mut bad_options_status = options();
-        bad_options_status.status = "".to_owned();
+        bad_options_status.status = String::new();
         assert!(Badge::new(bad_options_status).is_err());
 
         let mut bad_options_subject = options();
-        bad_options_subject.subject = "".to_owned();
+        bad_options_subject.subject = String::new();
         assert!(Badge::new(bad_options_subject).is_err());
     }
 
