@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+### Dependencies
+- Bump `base64` from 0.21 to 0.22 ([#8](https://github.com/vbrandl/badgers/pull/8))
+
 ## [1.2.0] 2023-01-18
 
 ### Dependencies
