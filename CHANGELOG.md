@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Dependencies
 - Bump `base64` from 0.21 to 0.22 ([#8](https://github.com/vbrandl/badgers/pull/8))
 - Bump `actions/cache` from 3 to 4 ([#10](https://github.com/vbrandl/badgers/pull/10))
+- Bump `actions/checkout` from 3 to 4 ([#11](https://github.com/vbrandl/badgers/pull/11))
 
 ## [1.2.0] 2023-01-18
 
