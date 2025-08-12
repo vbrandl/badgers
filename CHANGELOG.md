@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Dependencies
 - Bump `base64` from 0.21 to 0.22 ([#8](https://github.com/vbrandl/badgers/pull/8))
 - Bump `actions/cache` from 3 to 4 ([#10](https://github.com/vbrandl/badgers/pull/10))
-- Bump `actions/checkout` from 3 to 4 ([#11](https://github.com/vbrandl/badgers/pull/11))
+- Bump `actions/checkout` from 3 to 5 ([#11](https://github.com/vbrandl/badgers/pull/11), [#15](https://github.com/vbrandl/badgers/pull/15))
 - Bump `dangoslen/dependabot-changelog-helper` from 3 to 4 ([#13](https://github.com/vbrandl/badgers/pull/13))
 - Bump `stefanzweifel/git-auto-commit-action` from 5 to 6 ([#14](https://github.com/vbrandl/badgers/pull/14))
 
