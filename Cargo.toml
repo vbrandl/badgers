@@ -2,7 +2,13 @@
 name = "badgers"
 version = "1.2.0"
 description = "Simple badge generator"
-authors = ["Valentin Brandl <mail+rust@vbrandl.net>", "Onur Aslan <onur@onur.im>", "Joshua Nelson <jyn514@gmail.com>", "Chase Wilson <contact@chasewilson.dev>", "The Rust Project Developers"]
+authors = [
+  "Valentin Brandl <mail+rust@vbrandl.net>",
+  "Onur Aslan <onur@onur.im>",
+  "Joshua Nelson <jyn514@gmail.com>",
+  "Chase Wilson <contact@chasewilson.dev>",
+  "The Rust Project Developers",
+]
 
 license-file = "LICENSE"
 
@@ -14,6 +20,7 @@ documentation = "https://docs.rs/badgers"
 edition = "2018"
 
 [dependencies]
-ab_glyph = "0.2.16"
-base64 = "0.22"
-once_cell = "1"
+ab_glyph = "0.2.32"
+base64 = "0.22.1"
+once_cell = "1.21.3"
+thiserror = "2.0.17"
