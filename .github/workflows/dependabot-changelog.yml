@@ -21,7 +21,7 @@ jobs:
           ref: ${{ github.head_ref }}
       - uses: dangoslen/dependabot-changelog-helper@v4
         with:
-          activationLabel: "dependabot"
+          activationLabels: "dependabot"
       - uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "Update Changelog"

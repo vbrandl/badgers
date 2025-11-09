@@ -5,6 +5,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] 2025-11-09
+
+### Changes
+
+- Use dedicated error type ([#17](https://github.com/vbrandl/badgers/pull/17))
 
 ### Dependencies
 - Bump `base64` from 0.21 to 0.22 ([#8](https://github.com/vbrandl/badgers/pull/8))

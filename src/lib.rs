@@ -1,16 +1,24 @@
 //! Simple badge generator
 
-use std::convert::TryFrom;
+use std::{convert::TryFrom, sync::LazyLock};
 
-use ab_glyph::{point, Font, FontArc, Glyph, PxScale, ScaleFont};
+use ab_glyph::{Font, FontArc, Glyph, PxScale, ScaleFont, point};
 use base64::display::Base64Display;
-use once_cell::sync::Lazy;
+use thiserror::Error;
 
 const FONT_DATA: &[u8] = include_bytes!(concat!(
     env!("CARGO_MANIFEST_DIR"),
     "/assets/DejaVuSans.ttf"
 ));
 const FONT_SIZE: f32 = 11.0;
+
+#[derive(Debug, Error)]
+pub enum Error {
+    #[error("status must not be empty")]
+    EmptyStatus,
+    #[error("subject must not be empty")]
+    EmptySubject,
+}
 
 pub struct BadgeOptions {
     /// Subject will be displayed on the left side of badge
@@ -43,9 +51,10 @@ impl Badge {
     /// # Errors
     ///
     /// Will return `Err` if the `status` or `subject` is empty.
-    pub fn new(options: BadgeOptions) -> Result<Badge, String> {
-        static FONT: Lazy<FontArc> =
-            Lazy::new(|| FontArc::try_from_slice(FONT_DATA).expect("Failed to parse FONT_DATA"));
+    pub fn new(options: BadgeOptions) -> Result<Badge, Error> {
+        static FONT: LazyLock<FontArc> = LazyLock::new(|| {
+            FontArc::try_from_slice(FONT_DATA).expect("Failed to parse FONT_DATA")
+        });
 
         let font = &*FONT;
         let scale = PxScale {
@@ -53,17 +62,19 @@ impl Badge {
             y: FONT_SIZE,
         };
 
-        if options.status.is_empty() || options.subject.is_empty() {
-            return Err(String::from("status and subject must not be empty"));
+        if options.status.is_empty() {
+            Err(Error::EmptyStatus)
+        } else if options.subject.is_empty() {
+            Err(Error::EmptySubject)
+        } else {
+            Ok(Badge {
+                options,
+                // This clone is cheap since Font is an Arc
+                font: font.clone(),
+                scale,
+                // offset,
+            })
         }
-
-        Ok(Badge {
-            options,
-            // This clone is cheap since Font is an Arc
-            font: font.clone(),
-            scale,
-            // offset,
-        })
     }
 
     #[must_use]
