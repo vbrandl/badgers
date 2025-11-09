@@ -17,7 +17,7 @@ keywords = ["badge", "svg"]
 repository = "https://github.com/vbrandl/badgers"
 documentation = "https://docs.rs/badgers"
 
-edition = "2018"
+edition = "2024"
 
 [dependencies]
 ab_glyph = "0.2.32"

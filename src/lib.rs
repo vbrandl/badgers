@@ -2,7 +2,7 @@
 
 use std::{convert::TryFrom, sync::LazyLock};
 
-use ab_glyph::{point, Font, FontArc, Glyph, PxScale, ScaleFont};
+use ab_glyph::{Font, FontArc, Glyph, PxScale, ScaleFont, point};
 use base64::display::Base64Display;
 use thiserror::Error;
 
