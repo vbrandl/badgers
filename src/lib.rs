@@ -1,10 +1,9 @@
 //! Simple badge generator
 
-use std::convert::TryFrom;
+use std::{convert::TryFrom, sync::LazyLock};
 
 use ab_glyph::{point, Font, FontArc, Glyph, PxScale, ScaleFont};
 use base64::display::Base64Display;
-use once_cell::sync::Lazy;
 
 const FONT_DATA: &[u8] = include_bytes!(concat!(
     env!("CARGO_MANIFEST_DIR"),
@@ -44,8 +43,9 @@ impl Badge {
     ///
     /// Will return `Err` if the `status` or `subject` is empty.
     pub fn new(options: BadgeOptions) -> Result<Badge, String> {
-        static FONT: Lazy<FontArc> =
-            Lazy::new(|| FontArc::try_from_slice(FONT_DATA).expect("Failed to parse FONT_DATA"));
+        static FONT: LazyLock<FontArc> = LazyLock::new(|| {
+            FontArc::try_from_slice(FONT_DATA).expect("Failed to parse FONT_DATA")
+        });
 
         let font = &*FONT;
         let scale = PxScale {
