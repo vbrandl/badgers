@@ -6,7 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Dependencies
-
+- Bump `actions/cache` from 4 to 5 ([#19](https://github.com/vbrandl/badgers/pull/19))
+- Bump `thiserror` from 2.0.17 to 2.0.18 ([#20](https://github.com/vbrandl/badgers/pull/20))
 - Bump `actions/cache` from 4 to 5 ([#19](https://github.com/vbrandl/badgers/pull/19))
 
 ## [2.0.0] 2025-11-09
