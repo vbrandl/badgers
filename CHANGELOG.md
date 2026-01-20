@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump `thiserror` from 2.0.17 to 2.0.18 ([#20](https://github.com/vbrandl/badgers/pull/20))
 - Bump `actions/cache` from 4 to 5 ([#19](https://github.com/vbrandl/badgers/pull/19))
 - Bump `actions/checkout` from 5 to 6 ([#18](https://github.com/vbrandl/badgers/pull/18))
+- Bump `rust-toolchain` from 1.91.0 to 1.92.0 ([#22](https://github.com/vbrandl/badgers/pull/22))
 
 ## [2.0.0] 2025-11-09
 
