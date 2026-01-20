@@ -1,21 +1,31 @@
 version: 2
 updates:
-  - package-ecosystem: cargo
+  - package-ecosystem: "cargo"
     directory: "/"
     schedule:
-      interval: daily
-      time: "04:00"
+      interval: "daily"
     open-pull-requests-limit: 10
     assignees:
       - vbrandl
     labels:
-      - dependencies
       - dependabot
+      - dependencies
 
-  - package-ecosystem: 'github-actions'
-    directory: '/'
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
-      interval: 'daily'
+      interval: "daily"
+    open-pull-requests-limit: 10
+    assignees:
+      - vbrandl
+    labels:
+      - dependabot
+      - dependencies
+
+  - package-ecosystem: "rust-toolchain"
+    directory: "/"
+    schedule:
+      interval: "daily"
     open-pull-requests-limit: 10
     assignees:
       - vbrandl
