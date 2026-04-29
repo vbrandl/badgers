@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump `rust-toolchain` from 1.91.0 to 1.95.0 ([#22](https://github.com/vbrandl/badgers/pull/22), [#25](https://github.com/vbrandl/badgers/pull/25), [#28](https://github.com/vbrandl/badgers/pull/28), [#30](https://github.com/vbrandl/badgers/pull/30), [#31](https://github.com/vbrandl/badgers/pull/31), [#38](https://github.com/vbrandl/badgers/pull/38))
 - Use rustsec audit action ([#36](https://github.com/vbrandl/badgers/pull/36))
 - Bump `nixpkgs` from `dd9b079` to `b12141e` ([#34](https://github.com/vbrandl/badgers/pull/34), [#39](https://github.com/vbrandl/badgers/pull/39))
-- Bump `rust-overlay` from `a1ab5e8` to `40e6ccc` ([#35](https://github.com/vbrandl/badgers/pull/35), [#37](https://github.com/vbrandl/badgers/pull/37), [#40](https://github.com/vbrandl/badgers/pull/40))
+- Bump `rust-overlay` from `a1ab5e8` to `3ecb5e6` ([#35](https://github.com/vbrandl/badgers/pull/35), [#37](https://github.com/vbrandl/badgers/pull/37), [#40](https://github.com/vbrandl/badgers/pull/40), [#41](https://github.com/vbrandl/badgers/pull/41))
 
 ## [2.0.0] 2025-11-09
 
