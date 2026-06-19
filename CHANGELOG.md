@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump `actions/cache` from 4 to 5 ([#19](https://github.com/vbrandl/badgers/pull/19))
 - Bump `thiserror` from 2.0.17 to 2.0.18 ([#20](https://github.com/vbrandl/badgers/pull/20))
 - Bump `actions/cache` from 4 to 5 ([#19](https://github.com/vbrandl/badgers/pull/19))
-- Bump `actions/checkout` from 5 to 6 ([#18](https://github.com/vbrandl/badgers/pull/18))
+- Bump `actions/checkout` from 5 to 7 ([#18](https://github.com/vbrandl/badgers/pull/18), [#60](https://github.com/vbrandl/badgers/pull/60))
 - Bump `rust-toolchain` from 1.91.0 to 1.96.0 ([#22](https://github.com/vbrandl/badgers/pull/22), [#25](https://github.com/vbrandl/badgers/pull/25), [#28](https://github.com/vbrandl/badgers/pull/28), [#30](https://github.com/vbrandl/badgers/pull/30), [#31](https://github.com/vbrandl/badgers/pull/31), [#38](https://github.com/vbrandl/badgers/pull/38), [#53](https://github.com/vbrandl/badgers/pull/53))
 - Use rustsec audit action ([#36](https://github.com/vbrandl/badgers/pull/36))
 - Bump `nixpkgs` from `dd9b079` to `567a49d` ([#34](https://github.com/vbrandl/badgers/pull/34), [#39](https://github.com/vbrandl/badgers/pull/39), [#42](https://github.com/vbrandl/badgers/pull/42), [#44](https://github.com/vbrandl/badgers/pull/44), [#46](https://github.com/vbrandl/badgers/pull/46), [#48](https://github.com/vbrandl/badgers/pull/48), [#51](https://github.com/vbrandl/badgers/pull/51), [#55](https://github.com/vbrandl/badgers/pull/55), [#57](https://github.com/vbrandl/badgers/pull/57), [#59](https://github.com/vbrandl/badgers/pull/59))
